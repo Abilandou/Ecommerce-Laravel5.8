@@ -25,6 +25,8 @@ How to use and run this project successfully
         ****** This is where you will replace the databaseName, DatabaseUserName, DatabasePassword. You are basically concerned 
         only with the database Name,username and password.  
         
+        ******** SCROLL TO THIS SECTION BEFORE DOING THE CHANGES **********
+        
         DB_CONNECTION=mysql
         DB_HOST=127.0.0.1
         DB_PORT=3306
