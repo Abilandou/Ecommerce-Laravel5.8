@@ -1,55 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="{{ csrf_token() }}">
-    <meta name="csrf-token" content="">
-    <title>Home | EcomSite</title>
-    <link href="{{ asset('css/frontend_css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/frontend_fonts/font-awesome.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/frontend_css/prettyPhoto.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/frontend_css/price-range.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/frontend_css/animate.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/frontend_css/main.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/frontend_css/responsive.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/frontend_css/easyzoom.css') }}" rel="stylesheet">
-	<link href="{{ asset('css/frontend_css/passtrength.css') }}" rel="stylesheet">
-    
-    
-    
-    <!-- <script src="{{ asset('js/frontend_js/html5shiv.js') }}"></script>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="author" content="{{ csrf_token() }}">
+        <meta name="csrf-token" content="">
+        <title>
+        <?php if(!empty($meta_title)){ echo ($meta_title); } else{ echo( "Home | EcomSite"); } ?>
+        </title>
+
+        @if(!empty($meta_description))
+        <meta name="description" content="{{ $meta_description }}">
+        @endif @if(!empty($meta_key_word))
+        <meta name="keywords" content="{{ $meta_key_word }}">
+        @endif
+
+        <link href="{{ asset('css/frontend_css/bootstrap.min.css') }}" rel="stylesheet">
+        <link
+            href="{{ asset('css/frontend_fonts/font-awesome.min.css') }}"
+            rel="stylesheet">
+        <link href="{{ asset('css/frontend_css/prettyPhoto.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/frontend_css/price-range.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/frontend_css/animate.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/frontend_css/main.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/frontend_css/responsive.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/frontend_css/easyzoom.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/frontend_css/passtrength.css') }}" rel="stylesheet">
+
+        <!-- <script src="{{ asset('js/frontend_js/html5shiv.js') }}"></script>
     <script src="{{ asset('js/frontend_js/respond.min.js') }}"></script> -->
 
+        <link
+            rel="shortcut icon"
+            href="{{ asset('images/frontend_images/ico/favicon.ico') }}">
+        <link
+            rel="apple-touch-icon-precomposed"
+            sizes="144x144"
+            href="{{ asset('images/frontend_images/home/apple-touch-icon-144-precomposed.png') }}">
+        <link
+            rel="apple-touch-icon-precomposed"
+            sizes="114x114"
+            href="{{ asset('images/frontend_images/ico/apple-touch-icon-114-precomposed.png') }}">
+        <link
+            rel="apple-touch-icon-precomposed"
+            sizes="72x72"
+            href="{{ asset('images/frontend_images/ico/apple-touch-icon-72-precomposed.png') }}">
+        <link
+            rel="apple-touch-icon-precomposed"
+            href="{{ asset('images/frontend_images/ico/apple-touch-icon-57-precomposed.png') }}">
+    </head>
+    <!--/head-->
 
-         
-    <link rel="shortcut icon" href="{{ asset('images/frontend_images/ico/favicon.ico') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('images/frontend_images/home/apple-touch-icon-144-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('images/frontend_images/ico/apple-touch-icon-114-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('images/frontend_images/ico/apple-touch-icon-72-precomposed.png') }}">
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('images/frontend_images/ico/apple-touch-icon-57-precomposed.png') }}">
-</head><!--/head-->
+    <body>
 
-<body>
-    
-    @include('layouts.frontLayout.front_header')
-	
-	@yield('content')
-	
-	@include('layouts.frontLayout.front_footer')
-	
+        @include('layouts.frontLayout.front_header') @yield('content')
+        @include('layouts.frontLayout.front_footer')
 
-  
-    <script src="{{ asset('js/frontend_js/jquery.js') }}"></script>
-	<script src="{{ asset('js/frontend_js/bootstrap.min.js') }}"></script>
-	<script src="{{ asset('js/frontend_js/jquery.scrollUp.min.js') }}"></script>
-	<script src="{{ asset('js/frontend_js/price-range.js') }}"></script>
-    <script src="{{ asset('js/frontend_js/jquery.prettyPhoto.js') }}"></script>
-    <script src="{{ asset('js/frontend_js/main.js') }}"></script>
-    <script src="{{ asset('js/frontend_js/easyzoom.js') }}"></script>
-    <script src="{{ asset('js/frontend_js/jquery.validate.js') }}"></script>
-    <script src="{{ asset('js/frontend_js/passtrength.js') }}"></script>
+        <script src="{{ asset('js/frontend_js/jquery.js') }}"></script>
+        <script src="{{ asset('js/frontend_js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('js/frontend_js/jquery.scrollUp.min.js') }}"></script>
+        <script src="{{ asset('js/frontend_js/price-range.js') }}"></script>
+        <script src="{{ asset('js/frontend_js/jquery.prettyPhoto.js') }}"></script>
+        <script src="{{ asset('js/frontend_js/main.js') }}"></script>
+        <script src="{{ asset('js/frontend_js/easyzoom.js') }}"></script>
+        <script src="{{ asset('js/frontend_js/jquery.validate.js') }}"></script>
+        <script src="{{ asset('js/frontend_js/passtrength.js') }}"></script>
 
-</body>
+    </body>
 </html>

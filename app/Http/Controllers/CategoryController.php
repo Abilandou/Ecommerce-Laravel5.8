@@ -24,11 +24,24 @@ class CategoryController extends Controller{
             if(empty($data['category_name'])){
                 return redirect()->back()->with('flash_message_error', 'Fill required(*) fields, Category name is missing');
             }
+            if(empty($data['meta_title'])){
+                  $data['meta_title'] = "";
+              }
+              if(empty($data['meta_keyword'])){
+                  $data['meta_keyword'] = "";
+              }
+              if(empty($data['meta_description'])){
+                  $data['meta_description'] = "";
+              }
+
             $category->name = $data['category_name'];
 
             $category->parent_id = $data['parent_id'];
 
             $category->description = $data['description'];
+            $category->meta_title = $data['meta_title'];
+            $category->meta_keyword = $data['meta_keyword'];
+            $category->meta_description = $data['meta_description'];
             $category->url = $data['url'];
             $category->status = $status;
 
@@ -68,10 +81,13 @@ class CategoryController extends Controller{
             Category::where(['id'=>$id])->update([
                                         'name'=>$data['category_name'],
                                         'description'=>$data['description'],
+                                        'meta_title'=>$data['meta_title'],
+                                        'meta_keyword'=>$data['meta_keyword'],
+                                        'meta_description'=>$data['meta_description'],
                                         'url'=>$data['url'],
                                         'status'=>$status,
                                     ]);
-            return redirect('/admin/view_categories')->with('flash_message_success', 'Category updated Successfully'); 
+            return redirect('/admin/view_categories')->with('flash_message_success', 'Category updated Successfully');
         }
         $categoryDetails = Category::where(['id'=>$id])->first();
         $levels = Category::where(['parent_id'=>0])->get();
@@ -86,5 +102,11 @@ class CategoryController extends Controller{
         }
 
     }
-    
+
+    public function sideBarCategories(){
+
+        $categories = Category::get();
+        return view('layouts.frontLayout.front_sidebar')->with(compact('categories'));
+    }
+
 }

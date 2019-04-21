@@ -16,7 +16,7 @@ use DB;
 use App\Coupon;
 use App\Country;
 use App\DeliveryAddress;
-// use App\Cart;
+use App\Cart;
 use App\User;
 use App\Order;
 use App\OrdersProduct;
@@ -409,8 +409,12 @@ class ProductsController extends Controller
             $productsAll = Product::where(['category_id' => $categoryDetails->id])->where('status',1)->get();
         }
 
+        $meta_title = $categoryDetails->meta_title;
+        $meta_description = $categoryDetails->meta_description;
+        $meta_keyword = $categoryDetails->meta_keyword;
+
         // $productsAll = Product::where(['category_id'=>$categoryDetails->id])->get();
-        return view('products.listing_category')->with(compact('categories','categoryDetails', 'productsAll'));
+        return view('products.listing_category')->with(compact('categories','categoryDetails', 'productsAll', 'meta_title', 'meta_description', 'meta_keyword'));
     }
 
     public function userSearchProduct(Request $request){
@@ -474,9 +478,12 @@ class ProductsController extends Controller
         // echo "<pre>"; print_r($produtAltImages); die;
 
        $total_stock = ProductsAttribute::where('product_id', $id)->sum('stock');
+       $meta_title = $productDetails->product_name;
+       $meta_description = $productDetails->product_description;
+       $meta_keyword = $productDetails->product_description;
 
 
-        return view('products.detail')->with(compact('productDetails', 'categories', 'produtAltImages', 'total_stock', 'relatedProducts'));
+        return view('products.detail')->with(compact('productDetails', 'categories', 'produtAltImages', 'total_stock', 'relatedProducts', 'meta_title', 'meta_description', 'meta_keyword'));
     }
 
     public function getProductPrice(Request $request){
@@ -582,13 +589,14 @@ class ProductsController extends Controller
         }
         
          $userCart = DB::table('carts')->where(['session_id'=>$session_id])->get();
-        //  echo "<pre>"; print_r($userCart); die;
+         // echo "<pre>"; print_r($userCart); die;
         foreach($userCart as $key => $product){
             $productDetails = Product::where('id', $product->product_id)->first();
             $userCart[$key]->image = $productDetails->image; 
         }
         //   echo "<pre>"; print_r($userCart); die;
-        return view('products.cart')->with(compact('userCart'));
+        $meta_title = "Shopping Cart";
+        return view('products.cart')->with(compact('userCart', 'meta_title'));
     }
 
     public function deleteCartProduct($id = null){
@@ -685,6 +693,7 @@ class ProductsController extends Controller
     }
 
     public function checkout(Request $request){
+        $session_id = Session::get('session_id');
         $user_id = Auth::user()->id;
         $user_email = Auth::user()->email;
         $userDetails = User::find($user_id);
@@ -692,6 +701,16 @@ class ProductsController extends Controller
         // echo "<pre>"; print_r( $userDetails); die;
         $countries = Country::get();
 
+        //check if cart is empty
+        $userCartItems = Cart::where(['session_id'=>$session_id])->count();
+
+        //Return an error message if user cart is empty
+        if($userCartItems < 1){
+            return redirect()->back()->with('flash_message_error', 'Sorry, your cart is empty please add item(s) to card before you can checkout');
+        }
+
+
+        // echo "<pre>"; print_r( $userCart); die;
         //check if shiping address exists
         $shippingCount = DeliveryAddress::where('user_id',$user_id)->count();
         $shippingCount = json_decode(json_encode( $shippingCount));
@@ -764,9 +783,9 @@ class ProductsController extends Controller
                return redirect('/review_order');
                
         }
+        $meta_title = "checkout";
 
-
-        return view('products.checkout')->with(compact('userDetails', 'countries', 'shippingDetails'));
+        return view('products.checkout')->with(compact('userDetails', 'countries', 'shippingDetails', 'meta_title'));
     }
 
     //Admin view orders from admin panel
@@ -788,6 +807,7 @@ class ProductsController extends Controller
          //Get Order Status from order_status table
          $orderStatus = OrdersStatus::get();
 
+         
          //Get a single order status
          $singleOrder = OrdersStatus::where('id',$id)->get();
         return view('admin.orders.order_details')->with(compact('orderDetails', 'userDetails', 'orderStatus', 'singleOrder'));

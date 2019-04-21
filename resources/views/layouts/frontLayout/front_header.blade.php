@@ -1,7 +1,10 @@
 
 <?php
 use App\Http\Controllers\Controller;
+use App\Cart;
+use App\Session;
 $mainCategories = Controller::mainCategories();
+
 ?>
 
 <header id="header"><!--header-->
@@ -40,7 +43,7 @@ $mainCategories = Controller::mainCategories();
 						<div class="logo pull-left">
 							<a href="index.html">
 							<!-- <img src="images/frontend_images/home/logo.png" alt="" /> -->
-								<h6>Dulfy<span>@ZamaniPrice</span></h6>
+								<h6>E-<span>Com Site</span></h6>
 							</a>
 						</div>
 						<div class="btn-group pull-right">
@@ -70,10 +73,10 @@ $mainCategories = Controller::mainCategories();
 					<div class="col-sm-8">
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-								<li><a href="#"><i class="fas fa-user"></i> About</a></li>
-								<li><a href="#"><i class="fas fa-star"></i> Contact</a></li>
-								<li><a href="checkout.html"><i class="fa fa-crosshairs"></i> Services</a></li>
-								<li><a href="/cart"><i class="fas fa-shopping-cart"></i> Cart</a></li>
+								<li><a href="{{ url('/page/about-us') }}"><i class="fas fa-user"></i> About</a></li>
+								<li><a href="{{ url('/page/contact_us') }}"><i class="fas fa-star"></i> Contact</a></li>
+								<li><a href="{{ url('/page/services') }}"><i class="fa fa-crosshairs"></i> Services</a></li>
+								<li><a href="{{ url('/cart') }}"><i class="fas fa-shopping-cart"></i> Cart</a></li>
 								@if(empty(Auth::check()))
 								<li><a href="{{url('/login_register') }}"><i class="fas fa-lock"></i> Login</a></li>
 								@else

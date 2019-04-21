@@ -94,8 +94,8 @@ class OrdersController extends Controller
             $userCart[$key]->image = $productDetails->image; 
         }
         // echo "<pre>"; print_r($userCart); die;
-
-        return view('userOrders.review_order')->with(compact('userDetails', 'shippingDetails', 'userCart'));
+        $meta_title = "review order";
+        return view('userOrders.review_order')->with(compact('userDetails', 'shippingDetails', 'userCart', 'meta_title'));
     }
 
     public function placeOrder(Request $request){
@@ -207,7 +207,8 @@ class OrdersController extends Controller
         $user_email = Auth::user()->email;
         DB::table('carts')->where('user_email',$user_email)->delete();
 
-        return view('userOrders.thanks');
+        $meta_title = "payment method";
+        return view('userOrders.thanks')->with(compact('meta_title'));
     }
 
     public function userOrders(){
@@ -263,6 +264,7 @@ class OrdersController extends Controller
         $user_email = Auth::user()->email;
         DB::table('carts')->where('user_email',$user_email)->delete();
 
-        return view('userOrders.paypal');
+        $meta_title = "paypal payment";
+        return view('userOrders.paypal')->with(compact('meta_title'));
     }
 }

@@ -56,15 +56,105 @@
               </div>
 
               <div class="control-group">
-                <label class="control-label">Description(Page Body)<span class="required" style="color:red;">*</span></label>
+                <label class="control-label">Meta Title<span class="required" style="color:red;">*</span></label>
+                <div class="controls">
+                  <input type="text" 
+                    required 
+                    name="meta_title" 
+                    id="meta_title">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Meta keyword<span class="required" style="color:red;">*</span></label>
+                <div class="controls">
+                  <input type="text" 
+                    required 
+                    name="meta_keyword" 
+                    id="meta_keyword">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Meta Description<span class="required" style="color:red;">*</span></label>
+                <div class="controls">
+                  <textarea type="text" 
+                    required 
+                    style="width:250px;"
+                    cols="20"
+                    rows="5"
+                    name="meta_description" 
+                    id="meta_description">
+                  </textarea>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Cms Subtitle One<span class="required" style="color:red;">*</span></label>
+                <div class="controls">
+                  <input type="text" 
+                    required 
+                    name="sub_title_one" 
+                    id="sub_title_one">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Description(Page Body One)<span class="required" style="color:red;">*</span></label>
                 <div class="controls">
                   <textarea type="text" 
                     required 
                     style="width:500px;"
                     cols="400"
                     rows="10"
+                    required 
                     name="description" 
                     id="description">
+                  </textarea>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Cms Subtitle Two<span class="required" style="color:red;">*</span></label>
+                <div class="controls">
+                  <input type="text"  
+                    name="sub_title_two" 
+                    id="sub_title_two">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Description(Page Body Two)<span class="required" style="color:red;">*</span></label>
+                <div class="controls">
+                  <textarea type="text" 
+                    style="width:500px;"
+                    cols="400"
+                    rows="10"
+                    name="content_two" 
+                    id="content_two">
+                  </textarea>
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Cms Subtitle Three<span class="required" style="color:red;">*</span></label>
+                <div class="controls">
+                  <input type="text" 
+                    name="sub_title_three" 
+                    id="sub_title_three">
+                </div>
+              </div>
+
+              <div class="control-group">
+                <label class="control-label">Description(Page Body Three)<span class="required" style="color:red;">*</span></label>
+                <div class="controls">
+                  <textarea type="text" 
+                    required 
+                    style="width:500px;"
+                    cols="400"
+                    rows="10"
+                    name="content_three" 
+                    id="content_three">
                   </textarea>
                 </div>
               </div>

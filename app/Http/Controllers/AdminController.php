@@ -21,14 +21,14 @@ class AdminController extends Controller
 
             //Let admin login details come from admin table
             $adminCount = Admin::where([
-                                'user_name'=>$data['user_name'], 
+                                'user_name'=>$data['user_name'],
                                 'password'=>md5($data['password']),
                                 'status'=>1
                             ])->count();
 
-            if($adminCount > 0){                
+            if($adminCount > 0){
             // if(Auth::attempt(['email'=>$data['email'],'password'=>$data['password'],'admin'=>'1'])){
-                // echo "Success"; 
+                // echo "Success";
                 // die;
 
                 Session::put('adminSession', $data['user_name']); //This make sure all access to dashboard must pass through admin login
@@ -65,7 +65,7 @@ class AdminController extends Controller
         // $current_password = $data['current_pwd'];
         // $check_password =  Admin::where(['user_name'=>Session::get('adminSession')])->first();
         $adminCount = Admin::where([
-            'user_name'=>Session::get('adminSession'), 
+            'user_name'=>Session::get('adminSession'),
             'password'=>md5($data['password'])
         ])->count();
 
@@ -90,13 +90,13 @@ class AdminController extends Controller
             // $current_password = $data['current_pwd'];
 
             $adminCount = Admin::where([
-                'user_name'=>Session::get('adminSession'), 
+                'user_name'=>Session::get('adminSession'),
                 'password'=>md5($data['password'])
             ])->count();
 
             // if(Hash::check($current_password, $check_password->password)){
 
-            if($adminCount == 1){    
+            if($adminCount == 1){
                 $password = md5($data['new_pwd']);
                 Admin::where('user_name',Session::get('adminSession'))->update(['password'=>$password]);
                 return redirect('/admin/settings')->with('flash_message_success', 'Password updated Successfully!');

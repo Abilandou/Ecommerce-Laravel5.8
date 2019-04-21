@@ -53,11 +53,32 @@
               </div>
 
               <div class="control-group">
-                <label class="control-label">Description</label>
+                <label class="control-label">Category Description</label>
                 <div class="controls">
                   <textarea type="text" required name="description" id="description"></textarea>
                 </div>
               </div>
+
+              <div class="control-group">
+                <label class="control-label">Meta Title</label>
+                <div class="controls">
+                  <input type="text" required name="meta_title" id="meta_title">
+                </div>
+              </div
+
+              <div class="control-group">
+                <label class="control-label">Meta Description</label>
+                <div class="controls">
+                  <input type="text" required name="meta_description" id="meta_description">
+                </div>
+              </div
+
+              <div class="control-group">
+                <label class="control-label">Meta KeyWord</label>
+                <div class="controls">
+                  <input type="text" required name="meta_keyword" id="meta_keyword">
+                </div>
+              </div
 
               <div class="control-group">
                 <label class="control-label">URL</label>

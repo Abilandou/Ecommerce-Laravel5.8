@@ -72,6 +72,39 @@
               </div>
 
               <div class="control-group">
+                <label class="control-label">Meta Title</label>
+                <div class="controls">
+                  <input type="text" 
+                    name="meta_title" 
+                    required
+                    id="meta_title"
+                    value="{{ $categoryDetails->meta_title }}"
+                  >
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Meta Description</label>
+                <div class="controls">
+                  <input type="text" 
+                    name="meta_description" 
+                    required
+                    id="meta_description"
+                    value="{{ $categoryDetails->meta_description }}"
+                  >
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label">Meta Keyword</label>
+                <div class="controls">
+                  <input type="text" 
+                    name="meta_keyword" 
+                    required
+                    id="meta_keyword"
+                    value="{{ $categoryDetails->meta_keyword }}"
+                  >
+                </div>
+              </div>
+              <div class="control-group">
                 <label class="control-label">URL</label>
                 <div class="controls">
                   <input type="text" 

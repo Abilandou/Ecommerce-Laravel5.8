@@ -45,7 +45,7 @@
 											<a href="{{ asset('images/backend_images/products/large/'.$altimage->image) }}"
 												data-standard="{{ asset('images/backend_images/products/small/'.$altimage->image) }}"
 											>
-												<img  class="changeImage" width="80px" src="{{ asset('images/backend_images/products/small/'.$altimage->image) }}" alt="">
+												<img title="click for more detail" class="changeImage" width="80px" src="{{ asset('images/backend_images/products/small/'.$altimage->image) }}" alt="">
 											</a>
 										@endforeach
 									</div>

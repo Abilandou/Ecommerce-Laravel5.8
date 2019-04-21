@@ -43,13 +43,22 @@ Route::match(['get', 'post'], '/add_cart', 'ProductsController@addtocart');
 Route::match(['get', 'post'], '/cart', 'ProductsController@cart');
 
 //Delete Product from cart
-Route::get('/cart/delete_product/{id}', 'ProductsController@deleteCartProduct'); 
+Route::get('/cart/delete_product/{id}', 'ProductsController@deleteCartProduct');
 
 //Get product attribute price
 Route::get('/get-product-price', 'ProductsController@getProductPrice');
 
 //Update Product Quantity from cart
 Route::get('/cart/update_quantity/{id}/{quantity}', 'ProductsController@updateCartQuantity');
+
+
+
+//Front sidebar display categories
+Route::get('/front_sidebar', 'CategoryController@sideBarCategories');
+
+
+
+
 
 
 //Apply coupon
@@ -89,11 +98,11 @@ Route::group(['middleware' => ['frontlogin']], function(){
     //Check user current password.
     Route::get('/check_user_password', 'UsersController@checkUserPassword');
     Route::post('/update_user_password', 'UsersController@updateUserPassword');
-    //checkoout page. 
+    //checkoout page.
     Route::match(['get', 'post'], 'checkout', 'ProductsController@checkout');
 
     //Order review page
-    Route::match(['get', 'post'], '/review_order', 'OrdersController@orderReview'); 
+    Route::match(['get', 'post'], '/review_order', 'OrdersController@orderReview');
 
     //Place Order
     Route::match(['get', 'post'], '/place_order', 'OrdersController@placeOrder');
@@ -146,7 +155,7 @@ Route::group(['middleware' => ['adminlogin']], function(){
     //Coupon routes
     Route::match(['get', 'post'], 'admin/add_coupon', 'CouponsController@addCoupon');
     Route::get('/admin/view_coupons', 'CouponsController@viewCoupons');
-    Route::match(['get', 'post'], 'admin/edit_coupon/{id}', 'CouponsController@editCoupon'); 
+    Route::match(['get', 'post'], 'admin/edit_coupon/{id}', 'CouponsController@editCoupon');
     Route::get('/admin/delete_coupon/{id}', 'CouponsController@deleteCoupon');
 
     //Admin add Banners
@@ -180,7 +189,7 @@ Route::group(['middleware' => ['adminlogin']], function(){
     Route::post('/admin/update_order_status', 'ProductsController@updateOrderStatus');
 
     //Get all Registered Users
-    Route::get('/admin/view_users', 'UsersController@viewAllUsers'); 
+    Route::get('/admin/view_users', 'UsersController@viewAllUsers');
 
     //Delete a single user
     Route::match(['get', 'post'], '/admin/delete_user/{id}', 'UsersController@deleteUser');
@@ -198,11 +207,15 @@ Route::group(['middleware' => ['adminlogin']], function(){
     Route::match(['get', 'post'], '/admin/edit_cms_page/{id}', 'CmsPagesController@editCmsPage');
 
 
-    
+
 
 });
 
+//Contact Us
+Route::match(['get', 'post'], '/page/contact_us', 'CmsPagesController@contactUs');
+
+//View Cms pages Routes
+Route::match(['get', 'post'], '/page/{url}', 'CmsPagesController@CmsPage');
+
 
 Route::get('/logout', 'AdminController@logout');
-
-

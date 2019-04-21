@@ -23,7 +23,8 @@ class UsersController extends Controller
     //
 
     public function userLoginRegister(){
-        return view('users.login_register');
+        $meta_title = "login-register";
+        return view('users.login_register')->with(compact('meta_title'));
     }
 
     public function register(Request $request){
@@ -194,7 +195,8 @@ class UsersController extends Controller
                 return redirect()->back()->with('flash_message_success', 'Check Your account a New Password email has been sent');
             }//Send email reset password ends here
         }
-        return view('users.forgot_password')->with(compact('userDetails'));
+        $meta_title = "reset password";
+        return view('users.forgot_password')->with(compact('userDetails', 'meta_title'));
     }
 
     public function checkUserPassword(Request $request){
@@ -251,7 +253,8 @@ class UsersController extends Controller
             return redirect('/account')->with('flash_message_success', 'Your account details updated');
         }
 
-        return view('users.account')->with(compact('allCountries', 'userDetails'));
+        $meta_title = "user Account";
+        return view('users.account')->with(compact('allCountries', 'userDetails', 'meta_title'));
     }
 
     public function updateUserPassword(Request $request){
@@ -277,7 +280,8 @@ class UsersController extends Controller
         $allUsers = User::get();
         $allUsers = json_decode(json_encode($allUsers));
         // echo "<pre"; print_r($allUsers); die;
-        return view('admin.users.view_users')->with(compact('allUsers'));
+        $meta_title = "all users";
+        return view('admin.users.view_users')->with(compact('allUsers', 'meta_title'));
     }
 
     public function deleteUser($id = null){

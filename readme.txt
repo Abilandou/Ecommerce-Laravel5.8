@@ -2866,10 +2866,29 @@ And we will correct the path for font awesome icons.
  	To view all user orders, add hasMany relationship in Order model
  	
  	 	
+ ---------------------------------------------------------------------------------------------
+ 
+   SEO
+   	We are going to do SEO(Search Engine Optimisation), This will be added basically to all
+   	pages.
+   	
+   	First Open IndexController and define meta tags for title
+   	
+   	$meta_title = "Name of your website"; Title of your site
+   	
+   	//Add meta description to describe what your site do.
+   	$meta_description = "describe your site here"
+   	
+   	//Add key words to uniquely identify your site
+   	$meta_key_word = "Enter key words here";
+   	
+   	Go to the header, where the site title is located and add the meta tag for title
+   	
+   	Here our header is located at front_design.blade.php
+   	
   
   
-  
-  
+   Do Same in CmsPagesController at the bottom
   
   
   

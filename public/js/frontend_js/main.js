@@ -75,7 +75,7 @@ $(document).ready(function(){
 //Replace Products Main image with alternate image when alternate image is clicked
 
 $(document).ready(function(){
-	$(".changeImage").click(function(){
+	$(".changeImage").hover(function(){
 		var image = $(this).attr('src');
 		$(".mainImage").attr("src", image);
 	});
