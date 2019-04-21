@@ -32,6 +32,8 @@ How to use and run this project successfully
         DB_USERNAME=YourUserName
         DB_PASSWORD=YourPassword
         
+        ******************** BE SURE TO HAVE LARAVEL 5.8 INSTALLED ****************
+        
         
         
         
